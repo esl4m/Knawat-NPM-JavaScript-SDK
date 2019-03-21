@@ -1,5 +1,5 @@
 {
-  "name": "knawat-mp",
+  "name": "@knawat/mp",
   "version": "0.0.1",
   "description": "A Node.js package for the Knawat Dropshipping MP REST API",
   "main": "index.js",
