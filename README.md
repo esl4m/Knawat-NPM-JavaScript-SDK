@@ -24,35 +24,71 @@ Setup for the new Knawat Dropshipping REST API integration:
 const MP = require('knawat/mp');
 
 const mp = new MP({
-  consumer_key: 'XXXXXXXXXXXXXXXXXXXXXXXXXXX',
-  consumer_secret: 'XXXXXXXXXXXXXXXXXXXXXXXX'
+  consumerKey: 'XXXXXXXXXXXXXXXXXXXXXXXXXXX',
+  consumerSecret: 'XXXXXXXXXXXXXXXXXXXXXXXX',
+  token: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
 });
 ```
 
 ### Options
 
-| Option            | Type     | Required | Description                      |
-| ----------------- | -------- | -------- | -------------------------------- |
-| `consumer_key`    | `string` | yes      | Your Store's API consumer key    |
-| `consumer_secret` | `string` | yes      | Your Store's API consumer secret |
+| Option           | Type     | Required | Description                      |
+| ---------------- | -------- | -------- | -------------------------------- |
+| `consumerKey`    | `string` | yes      | Your Store's API consumer key    |
+| `consumerSecret` | `string` | yes      | Your Store's API consumer secret |
+| `token`          | `string` | no       | Previous token                   |
+
+<small>https://knawat-mp.restlet.io/#operation_get_token</small>
 
 # Methods
 
 ## Product Methods
 
-### getProducts (GET Products)
+### getProducts
+
+_Retrieve the list of all products or products for this channel, sorted by create date DESC_
 
 ```javascript
 mp.getProducts(limit, page, lastupdate);
 ```
 
-| Params       | Type        | Description                                                                                |
-| ------------ | ----------- | ------------------------------------------------------------------------------------------ |
-| `limit`      | `Integer`   | Number of products to retrieve. `Default: 10`                                              |
-| `page`       | `Integer`   | Number of the page to retrieve. `Default: 1`                                               |
-| `lastupdate` | `Timestamp` | Optional. UTC Timestamp of last import. for get only updated products after this Timestamp |
+| Params           | Type     | Required | Description                                                                      |
+| ---------------- | -------- | -------- | -------------------------------------------------------------------------------- |
+| `limit`          | `Number` | No       | Number of products to retrieve. `Default: 10`                                    |
+| `page`           | `Number` | No       | Number of the page to retrieve. `Default: 1`                                     |
+| `lastupdate`     | `Number` | No       | UTC Timestamp of last import. for get only updated products after this Timestamp |
+| `keyword`        | `String` | No       | Text to search in product SKU                                                    |
+| `hideOutOfStock` | `Number` | No       | 1 = hide out of stock products `Default: 0`                                      |
+
+<small>https://knawat-mp.restlet.io/#operation_get_products</small>
+
+### addProducts
+
+_Add products to my list_
+
+```javascript
+mp.addProducts(products);
+```
+
+| Option     | Type    | Required | Description                       |
+| ---------- | ------- | -------- | --------------------------------- |
+| `products` | `array` | yes      | Array of SKUs `[{ sku: '1234' }]` |
+
+<small>https://knawat-mp.restlet.io/#operation_add_to_my_products</small>
+
+### getProductsCount
+
+_Get in stock products count_
+
+```javascript
+mp.getProductsCount();
+```
+
+<small>https://knawat-mp.restlet.io/#operation_products_count</small>
 
 ### getProductBySku
+
+_Retrieve single product information by Product SKU. product should be under this store_
 
 ```javascript
 mp.getProductBySku(sku);
@@ -62,11 +98,41 @@ mp.getProductBySku(sku);
 | ------ | -------- | ------------------------------ |
 | `sku`  | `string` | SKU of Product you want to get |
 
-### getProductCount
+<small>https://knawat-mp.restlet.io/#operation_get_product_by_sku</small>
+
+### deleteProductBySku
+
+_Delete Product by Product SKU from store._
 
 ```javascript
-mp.getProductCount();
+mp.deleteProductBySku(products);
 ```
+
+<small>https://knawat-mp.restlet.io/#operation_delete_product_by_sku</small>
+
+### updateProductBySku
+
+_Update imported product External IDs by SKU_
+
+```javascript
+mp.updateProductBySku(products);
+```
+
+| Option | Type     | Required | Description            |
+| ------ | -------- | -------- | ---------------------- |
+| `data` | `object` | yes      | Check mp documentation |
+
+<small>https://knawat-mp.restlet.io/#operation_update_product</small>
+
+### getCategories
+
+_Get all categories related to my products._
+
+```javascript
+mp.getCategories();
+```
+
+<small>https://knawat-mp.restlet.io/#operation_get_list_of_categories</small>
 
 ## Order Methods
 
@@ -76,10 +142,10 @@ mp.getProductCount();
 mp.getOrders(limit, page);
 ```
 
-| Params  | Type      | Description                                  |
-| ------- | --------- | -------------------------------------------- |
-| `limit` | `Integer` | Number of orders to retrieve. `Default: 1`   |
-| `page`  | `Integer` | Number of the page to retrieve. `Default: 1` |
+| Params  | Type     | Description                                  |
+| ------- | -------- | -------------------------------------------- |
+| `limit` | `Number` | Number of orders to retrieve. `Default: 1`   |
+| `page`  | `Number` | Number of the page to retrieve. `Default: 1` |
 
 ### getOrderById (GET Order By Knawat Order Id)
 
