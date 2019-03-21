@@ -1,0 +1,48 @@
+{
+  "root": true,
+  "env": {
+    "node": true,
+    "commonjs": true,
+    "es6": true,
+    "jest": true
+  },
+  "extends": ["eslint:recommended", "airbnb-base", "prettier"],
+  "parserOptions": {
+    "ecmaVersion": 9,
+    "sourceType": "module"
+  },
+  "rules": {
+    "max-nested-callbacks": ["error", 5],
+    "max-depth": ["error", 5],
+    "complexity": ["error", 10],
+    "max-lines-per-function": [
+      "warn",
+      {
+        "max": 50,
+        "skipBlankLines": true,
+        "skipComments": true
+      }
+    ],
+    "linebreak-style": "off",
+    "comma-dangle": "off",
+    "arrow-parens": "off",
+    "function-paren-newline": "off",
+    "consistent-return": "off",
+    "no-underscore-dangle": "off",
+    "object-shorthand": "off",
+    "no-param-reassign": "off",
+    "radix": "off",
+    "require-jsdoc": [
+      "error",
+      {
+        "require": {
+          "FunctionDeclaration": true,
+          "MethodDefinition": true,
+          "ClassDeclaration": true,
+          "ArrowFunctionExpression": false,
+          "FunctionExpression": false
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "knawat-mp",
+  "version": "0.0.1",
+  "description": "A Node.js package for the Knawat Dropshipping MP REST API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Knawat/Knawat-NPM-JavaScript-SDK.git"
+  },
+  "keywords": [
+    "dropshipping",
+    "knawat",
+    "ecommerce"
+  ],
+  "author": "Knawat LLC",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Knawat/Knawat-NPM-JavaScript-SDK/issues"
+  },
+  "homepage": "https://github.com/Knawat/Knawat-NPM-JavaScript-SDK#readme",
+  "dependencies": {
+    "node-fetch": "^2.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.15.3",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "prettier": "^1.16.4"
+  }
+}
