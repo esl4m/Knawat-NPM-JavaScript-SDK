@@ -188,25 +188,25 @@ mp.updateOrder(order_id, order_data);
 ### GET
 
 ```javascript
-mp.get(endpoint);
+mp.$get(endpoint);
 ```
 
 ### POST
 
 ```javascript
-mp.post(endpoint, data);
+mp.$post(endpoint, data);
 ```
 
 ### PUT
 
 ```javascript
-mp.put(endpoint, data);
+mp.$put(endpoint, data);
 ```
 
 ### DELETE
 
 ```javascript
-mp.delete(endpoint);
+mp.$delete(endpoint);
 ```
 
 ## Reporting Security Issues
